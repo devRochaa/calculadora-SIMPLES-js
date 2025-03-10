@@ -7,6 +7,19 @@ function CriaCalculadora() {
             console.log('iniciei');
             this.cliqueBotoes();
             this.PressionaEnter();
+            this.FiltraCaracteres();
+        },
+
+        FiltraCaracteres() {
+            this.display.addEventListener('keydown', (e)=>{
+                let valor = e.target.value;
+                let ultimoCaractere = valor.charAt(valor.length - 1);
+                const caracteresPermitidos = ['+', '-', '*', '/', '.', '(', ')', '1', '2', '3','4','5','6','7','8','9'];
+                if (!caracteresPermitidos.includes(ultimoCaractere) && valor.length > 0){
+                    this.display.value = valor.slice(0, -1);
+                }
+                
+            });
         },
 
         BtnParaDisplay(texto) {
